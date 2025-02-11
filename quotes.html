@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Fun Fact Generator</title>
+    <title>Random Quote Generator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -56,54 +56,31 @@
 </head>
 <body>
     <div class="top-right">
-        <button onclick="window.location.href='quotes.html'">Quotes</button>
+        <button onclick="window.location.href='index.html'">Fun Facts</button>
     </div>
     <div class="container">
-        <h1>Did You Know?</h1>
-        <p id="fact">Click the button to get a fun fact!</p>
-        <button id="factButton">Get a Fun Fact</button>
-        <button onclick="downloadFactImage()">Download Fact</button>
-        <canvas id="factCanvas" style="display: none;"></canvas>
+        <h1>Inspirational Quotes</h1>
+        <p id="quote">Click the button to get a random quote!</p>
+        <button id="quoteButton">Get a Quote</button>
     </div>
 
     <script>
-        const facts = [
-            "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old and still perfectly good to eat!",
-            "Octopuses have three hearts and their blood is blue!",
-            "Bananas are berries, but strawberries are not!",
-            "A day on Venus is longer than a year on Venus.",
-            "Sharks existed before trees. They have been around for over 400 million years!",
-            "The Eiffel Tower can grow taller in the summer due to metal expansion.",
-            "Sloths can hold their breath longer than dolphins—up to 40 minutes!"
+        const quotes = [
+            "The only way to do great work is to love what you do. – Steve Jobs",
+            "Success is not the key to happiness. Happiness is the key to success. – Albert Schweitzer",
+            "Your time is limited, so don’t waste it living someone else’s life. – Steve Jobs",
+            "It does not matter how slowly you go as long as you do not stop. – Confucius",
+            "Believe you can and you're halfway there. – Theodore Roosevelt",
+            "Happiness depends upon ourselves. – Aristotle",
+            "You miss 100% of the shots you don’t take. – Wayne Gretzky"
         ];
 
-        function generateFact() {
-            const randomIndex = Math.floor(Math.random() * facts.length);
-            document.getElementById("fact").innerText = facts[randomIndex];
+        function generateQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById("quote").innerText = quotes[randomIndex];
         }
 
-        document.getElementById("factButton").addEventListener("click", generateFact);
-
-        function downloadFactImage() {
-            const factText = document.getElementById("fact").innerText;
-            const canvas = document.getElementById("factCanvas");
-            const ctx = canvas.getContext("2d");
-            canvas.width = 600;
-            canvas.height = 200;
-            
-            ctx.fillStyle = "#1e1e1e";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "white";
-            ctx.font = "20px Arial";
-            ctx.textAlign = "center";
-            ctx.fillText(factText, canvas.width / 2, canvas.height / 2);
-            
-            const image = canvas.toDataURL("image/png");
-            const a = document.createElement("a");
-            a.href = image;
-            a.download = "fun_fact.png";
-            a.click();
-        }
+        document.getElementById("quoteButton").addEventListener("click", generateQuote);
     </script>
 </body>
 </html>
