@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Fun Fact Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #ffcc00;
+        }
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Did You Know?</h1>
+        <p id="fact">Click the button to get a fun fact!</p>
+        <button id="factButton">Get a Fun Fact</button>
+        <button onclick="downloadFactImage()">Download Fact</button>
+        <canvas id="factCanvas" style="display: none;"></canvas>
+    </div>
+
+    <script>
+        const facts = [
+            "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3000 years old and still perfectly good to eat!",
+            "Bottlenose dolphins are the only other species to have names for themselves.",
+            "The oldest living land animal on earth is a 192-year-old tortoise named Jonathan.",
+            "Finland has ranked as the happiest country in the world for 7 years straight.",
+            "Octopuses have three hearts and their blood is blue!",
+            "Jupiter is the largest planet in the solar system.",
+            "Bananas are berries, but strawberries are not!",
+            "Sharks existed before trees. They have been around for over 400 million years!",
+            "The Eiffel Tower can grow taller in the summer due to metal expansion.",
+            "A day on Venus is longer than a year on Venus.",
+            "Walt Disney currently holds the most Academy Awards at a lifetime total of 26.",
+            "The American white pelican can hold up to three gallons of water in its mouth.",
+            "Bananas glow blue under black lights.",
+            "Russia has 11 time zones.",
+            "McDonald’s once made bubblegum-flavored broccoli.",
+            "The Great Barrier Reef in Australia is the world's largest coral reef.",
+            "Cleopatra was born in Egypt but comes from Macedonian descent.",
+            "It’s impossible to hum while holding your nose.",
+            "Butterflies can taste food with their feet.",
+            "Cows give more milk when they listen to music."
+        ];
+
+        function generateFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            document.getElementById("fact").innerText = facts[randomIndex];
+        }
+
+        document.getElementById("factButton").addEventListener("click", generateFact);
+
+        function downloadFactImage() {
+            const factText = document.getElementById("fact").innerText;
+            const canvas = document.getElementById("factCanvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = 600;
+            canvas.height = 200;
+            
+            ctx.fillStyle = "#1e1e1e";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "white";
+            ctx.font = "20px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(factText, canvas.width / 2, canvas.height / 2);
+            
+            const image = canvas.toDataURL("image/png");
+            const a = document.createElement("a");
+            a.href = image;
+            a.download = "fun_fact.png";
+            a.click();
+        }
+    </script>
+</body>
+</html>
