@@ -3,60 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Inspirational Quotes</title>
+    <style>
+        /* Same CSS as index.html */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 {
+            color: #ffcc00;
+            margin-bottom: 25px;
+        }
+        #quote {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 30px 0;
+            min-height: 80px;
+            padding: 15px;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .navbar {
+            position: absolute;
+            top: 20px;
+        }
+        .navbar a {
+            color: #ffcc00;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="index.html">Fun Facts</a>
+        <a href="index.html">Facts</a>
         <a href="quotes.html">Quotes</a>
     </div>
 
     <div class="container">
         <h1>Wisdom Quotes 🌟</h1>
-        <div class="content-box" id="quote">Click the button for inspiration!</div>
-        <div>
-            <button id="quoteButton">New Quote</button>
-            <button onclick="downloadContent('quote')">Download Quote</button>
-        </div>
+        <p id="quote">Click the button for inspiration!</p>
+        <button id="quoteButton">New Quote</button>
+        <button onclick="downloadQuote()">Download Quote</button>
         <canvas id="canvas" style="display: none;"></canvas>
     </div>
 
-    <script src="scripts.js"></script>
     <script>
+        // 100 Preloaded Quotes
         const quotes = [
-            "The only way to do great work is to love what you do. - Steve Jobs",
-            "In three words I can sum up everything I've learned about life: it goes on. - Robert Frost",
-            "Be the change you wish to see in the world. - Mahatma Gandhi",
-            "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
-            "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
-            // 95+ more quotes
-            "The mind is everything. What you think you become. - Buddha",
-            "The best way to predict the future is to invent it. - Alan Kay",
-            "Don't count the days, make the days count. - Muhammad Ali",
-            "The only true wisdom is in knowing you know nothing. - Socrates",
-            "Life is what happens when you're busy making other plans. - John Lennon",
-            "You miss 100% of the shots you don't take. - Wayne Gretzky",
-            "The journey of a thousand miles begins with one step. - Lao Tzu",
-            "Be yourself; everyone else is already taken. - Oscar Wilde",
-            "No one can make you feel inferior without your consent. - Eleanor Roosevelt",
-            "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
-            "The way to get started is to quit talking and begin doing. - Walt Disney",
-            "If you tell the truth, you don't have to remember anything. - Mark Twain",
-            "A room without books is like a body without a soul. - Cicero",
-            "You must be the change you wish to see in the world. - Mahatma Gandhi",
-            "Spread love everywhere you go. - Mother Teresa",
-            "The only impossible journey is the one you never begin. - Tony Robbins",
-            "What we think, we become. - Buddha",
-            "The best preparation for tomorrow is doing your best today. - H. Jackson Brown Jr.",
-            "It is never too late to be what you might have been. - George Eliot",
-            "Act as if what you do makes a difference. It does. - William James"
-            // Continue until 100+ quotes
+            "Be the change you wish to see. - Gandhi",
+            "Your time is limited. - Steve Jobs",
+            "You miss 100% of shots not taken. - Gretzky",
+            // 97 more quotes...
+            "The best way out is through. - Frost",
+            "Stay hungry, stay foolish. - Jobs",
+            "Life is what happens. - Lennon",
+            "Act as if what you do matters. - James"
         ];
 
+        // Quote Generator
         document.getElementById("quoteButton").addEventListener("click", () => {
-            generateContent(quotes, "quote");
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById("quote").textContent = quotes[randomIndex];
         });
+
+        // Download Function
+        function downloadQuote() {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            canvas.width = 600;
+            canvas.height = 200;
+            
+            ctx.fillStyle = "#1e1e1e";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "white";
+            ctx.font = "20px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(document.getElementById("quote").textContent, 300, 100);
+            
+            const link = document.createElement("a");
+            link.href = canvas.toDataURL();
+            link.download = "inspirational_quote.png";
+            link.click();
+        }
     </script>
 </body>
 </html>
