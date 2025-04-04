@@ -1,28 +1,63 @@
-/* Add this new class */
-.content-box {
-    font-size: 20px;
-    line-height: 1.6;
-    margin: 20px 0;
-    min-height: 150px;
-    padding: 25px;
-    border: 2px solid #333;
-    border-radius: 8px;
+/* Reverted to original styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #121212;
+    color: white;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-/* Update container dimensions */
+.navbar {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+}
+
+.navbar a {
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
 .container {
     background: #1e1e1e;
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
-    max-width: 800px;
-    width: 90%;
-    margin: 20px auto;
-    min-height: 400px; /* Increased container height */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    color: #ffcc00;
+    margin-bottom: 25px;
+}
+
+#fact, #quote {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 30px 0;
+    min-height: 60px;
+    padding: 15px;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
 }
