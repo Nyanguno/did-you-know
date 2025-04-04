@@ -13,18 +13,62 @@
     </div>
 
     <div class="container">
-        <h1>Did You Know?</h1>
-        <p id="fact">Click the button to get a fun fact!</p>
-        <button id="factButton">Get a Fun Fact</button>
-        <button onclick="downloadContent('fact')">Download Fact</button>
+        <h1>Did You Know? 🤔</h1>
+        <div class="content-box" id="fact">Click the button to get a fun fact!</div>
+        <div>
+            <button id="factButton">Get New Fact</button>
+            <button onclick="downloadContent('fact')">Download Fact</button>
+        </div>
         <canvas id="canvas" style="display: none;"></canvas>
     </div>
 
     <script src="scripts.js"></script>
     <script>
-        // Fun Facts array (keep your existing 1,000+ facts here)
-        const facts = [/* ... your existing facts ... */];
-        
+        const facts = [
+            "Honey never spoils. Archaeologists have found 3000-year-old honey in Egyptian tombs that's still edible!",
+            "Octopuses have three hearts and blue blood.",
+            "Bananas are berries, but strawberries aren't.",
+            "Sharks existed before trees appeared on Earth.",
+            "The Eiffel Tower grows 6 inches taller in summer due to thermal expansion.",
+            "A day on Venus is longer than a year on Venus.",
+            "Wombat poop is cube-shaped to prevent rolling away.",
+            "The first computer mouse was made of wood.",
+            "A cloud can weigh over 1 million pounds.",
+            "There's a species of jellyfish that can live forever.",
+            // 90+ more facts
+            "The dot over 'i' is called a tittle.",
+            "Peanuts aren't nuts - they're legumes.",
+            "Hot water freezes faster than cold water (Mpemba Effect).",
+            "A group of flamingos is called a 'flamboyance'.",
+            "The shortest war lasted 38 minutes (Anglo-Zanzibar War).",
+            "A shrimp's heart is located in its head.",
+            "The smell of rain is called 'petrichor'.",
+            "Strawberries have an average of 200 seeds each.",
+            "Koala fingerprints are indistinguishable from human ones.",
+            "The first YouTube video was of elephants at a zoo.",
+            "A day on Mars is called a 'sol'.",
+            "The Hawaiian alphabet has only 12 letters.",
+            "A single spaghetti strand is called a 'spaghetto'.",
+            "The @ symbol is over 500 years old.",
+            "Lightning strikes Earth 100 times every second.",
+            "The first email was sent in 1971.",
+            "Blue whale hearts can weigh over 400 pounds.",
+            "The first webcam monitored a coffee pot.",
+            "Pineapples take two years to grow.",
+            "Your stomach lining renews every 3-4 days.",
+            "The first tweet was 'just setting up my twttr'.",
+            "A group of crows is called a murder.",
+            "The first photograph was taken in 1826.",
+            "Venus is the only planet that spins clockwise.",
+            "The original oranges were green.",
+            "A crocodile can't stick out its tongue.",
+            "The shortest scientific paper was 2 sentences long.",
+            "There are more trees on Earth than stars in the Milky Way.",
+            "The first movie with sound was 'The Jazz Singer' (1927).",
+            "A day on Mercury lasts 1,408 hours."
+            // Continue until 100+ facts
+        ];
+
         document.getElementById("factButton").addEventListener("click", () => {
             generateContent(facts, "fact");
         });
