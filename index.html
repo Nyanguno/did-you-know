@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Fact Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Fun Facts</a>
+        <a href="quotes.html">Quotes</a>
+    </div>
+
+    <div class="container">
+        <h1>Did You Know?</h1>
+        <p id="fact">Click the button to get a fun fact!</p>
+        <button id="factButton">Get a Fun Fact</button>
+        <button onclick="downloadContent('fact')">Download Fact</button>
+        <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Fun Facts array (keep your existing 1,000+ facts here)
+        const facts = [/* ... your existing facts ... */];
+        
+        document.getElementById("factButton").addEventListener("click", () => {
+            generateContent(facts, "fact");
+        });
+    </script>
+</body>
+</html>

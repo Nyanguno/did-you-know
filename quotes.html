@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Fun Facts</a>
+        <a href="quotes.html">Quotes</a>
+    </div>
+
+    <div class="container">
+        <h1>Inspirational Quotes</h1>
+        <p id="quote">Click the button to get a quote!</p>
+        <button id="quoteButton">Get a Quote</button>
+        <button onclick="downloadContent('quote')">Download Quote</button>
+        <canvas id="canvas" style="display: none;"></canvas>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Quotes array (add your own)
+        const quotes = [
+            "The only way to do great work is to love what you do. – Steve Jobs",
+            "Innovation distinguishes between a leader and a follower. – Steve Jobs",
+            "Your time is limited, so don't waste it living someone else's life. – Steve Jobs",
+            // Add 100+ quotes here
+        ];
+        
+        document.getElementById("quoteButton").addEventListener("click", () => {
+            generateContent(quotes, "quote");
+        });
+    </script>
+</body>
+</html>
