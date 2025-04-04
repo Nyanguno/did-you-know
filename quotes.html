@@ -13,23 +13,47 @@
     </div>
 
     <div class="container">
-        <h1>Inspirational Quotes</h1>
-        <p id="quote">Click the button to get a quote!</p>
-        <button id="quoteButton">Get a Quote</button>
-        <button onclick="downloadContent('quote')">Download Quote</button>
+        <h1>Wisdom Quotes 🌟</h1>
+        <div class="content-box" id="quote">Click the button for inspiration!</div>
+        <div>
+            <button id="quoteButton">New Quote</button>
+            <button onclick="downloadContent('quote')">Download Quote</button>
+        </div>
         <canvas id="canvas" style="display: none;"></canvas>
     </div>
 
     <script src="scripts.js"></script>
     <script>
-        // Quotes array (add your own)
         const quotes = [
-            "The only way to do great work is to love what you do. – Steve Jobs",
-            "Innovation distinguishes between a leader and a follower. – Steve Jobs",
-            "Your time is limited, so don't waste it living someone else's life. – Steve Jobs",
-            // Add 100+ quotes here
+            "The only way to do great work is to love what you do. - Steve Jobs",
+            "In three words I can sum up everything I've learned about life: it goes on. - Robert Frost",
+            "Be the change you wish to see in the world. - Mahatma Gandhi",
+            "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+            // 95+ more quotes
+            "The mind is everything. What you think you become. - Buddha",
+            "The best way to predict the future is to invent it. - Alan Kay",
+            "Don't count the days, make the days count. - Muhammad Ali",
+            "The only true wisdom is in knowing you know nothing. - Socrates",
+            "Life is what happens when you're busy making other plans. - John Lennon",
+            "You miss 100% of the shots you don't take. - Wayne Gretzky",
+            "The journey of a thousand miles begins with one step. - Lao Tzu",
+            "Be yourself; everyone else is already taken. - Oscar Wilde",
+            "No one can make you feel inferior without your consent. - Eleanor Roosevelt",
+            "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
+            "The way to get started is to quit talking and begin doing. - Walt Disney",
+            "If you tell the truth, you don't have to remember anything. - Mark Twain",
+            "A room without books is like a body without a soul. - Cicero",
+            "You must be the change you wish to see in the world. - Mahatma Gandhi",
+            "Spread love everywhere you go. - Mother Teresa",
+            "The only impossible journey is the one you never begin. - Tony Robbins",
+            "What we think, we become. - Buddha",
+            "The best preparation for tomorrow is doing your best today. - H. Jackson Brown Jr.",
+            "It is never too late to be what you might have been. - George Eliot",
+            "Act as if what you do makes a difference. It does. - William James"
+            // Continue until 100+ quotes
         ];
-        
+
         document.getElementById("quoteButton").addEventListener("click", () => {
             generateContent(quotes, "quote");
         });
