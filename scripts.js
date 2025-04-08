@@ -1,24 +1,49 @@
+// Generalized functions
 function generateContent(array, elementId) {
+    if (!array || !array.length) {
+        console.error('Content array is empty or undefined');
+        return;
+    }
+    
     const randomIndex = Math.floor(Math.random() * array.length);
-    document.getElementById(elementId).innerText = array[randomIndex];
+    const element = document.getElementById(elementId);
+    
+    if (element) {
+        element.textContent = array[randomIndex];
+    } else {
+        console.error(`Element with ID ${elementId} not found`);
+    }
 }
 
 function downloadContent(elementId) {
-    const content = document.getElementById(elementId).innerText;
+    const contentElement = document.getElementById(elementId);
+    if (!contentElement) {
+        console.error(`Element with ID ${elementId} not found`);
+        return;
+    }
+
+    const content = contentElement.textContent;
     const canvas = document.getElementById("canvas");
+    if (!canvas) {
+        console.error('Canvas element not found');
+        return;
+    }
+
     const ctx = canvas.getContext("2d");
-    
     canvas.width = 600;
     canvas.height = 200;
     
-    // Canvas styling
+    // Reset canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Styling
     ctx.fillStyle = "#1e1e1e";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "white";
     ctx.font = "20px Arial";
     ctx.textAlign = "center";
     
-    // Wrap text
+    // Text wrapping
     const lines = wrapText(ctx, content, canvas.width - 40);
     const yPosition = (canvas.height - (lines.length * 24)) / 2;
     
@@ -26,15 +51,15 @@ function downloadContent(elementId) {
         ctx.fillText(line, canvas.width / 2, yPosition + (index * 24));
     });
     
-    // Download
+    // Create download
     const image = canvas.toDataURL("image/png");
     const a = document.createElement("a");
     a.href = image;
-    a.download = `${elementId}.png`;
+    a.download = `${elementId}_${Date.now()}.png`;
     a.click();
 }
 
-// Text wrapping helper
+// Helper function (no changes needed)
 function wrapText(context, text, maxWidth) {
     const words = text.split(" ");
     const lines = [];
@@ -42,7 +67,7 @@ function wrapText(context, text, maxWidth) {
 
     for (let i = 1; i < words.length; i++) {
         const testLine = currentLine + " " + words[i];
-        const metrics = context.measureText(testLine);
+        const metrics = context.MeasureText(testLine);
         if (metrics.width < maxWidth) {
             currentLine = testLine;
         } else {
