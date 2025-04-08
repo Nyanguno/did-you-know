@@ -4,87 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inspirational Quotes</title>
-    <style>
-        /* SAME STYLES AS INDEX.HTML */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #121212;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
-            max-width: 600px;
-            width: 90%;
-        }
-        h1 {
-            color: #ffcc00;
-            margin-bottom: 25px;
-        }
-        #quote {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 30px 0;
-            min-height: 80px;
-            padding: 15px;
-        }
-        button {
-            background: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            margin: 10px;
-        }
-        button:hover {
-            background: #0056b3;
-        }
-        .navbar {
-            position: absolute;
-            top: 20px;
-        }
-        .navbar a {
-            color: #ffcc00;
-            text-decoration: none;
-            margin: 0 15px;
-            padding: 8px 15px;
-            border-radius: 5px;
-            background: rgba(255, 204, 0, 0.1);
-            transition: all 0.3s;
-        }
-        .navbar a:hover {
-            background: rgba(255, 204, 0, 0.2);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="navbar">
+    <nav class="navbar">
         <a href="index.html">Facts</a>
         <a href="quotes.html">Quotes</a>
-    </div>
+    </nav>
 
     <div class="container">
         <h1>Wisdom Quotes 🌟</h1>
         <p id="quote">Click the button for inspiration!</p>
         <button id="quoteButton">New Quote</button>
-        <button onclick="downloadQuote()">Download Quote</button>
+        <button onclick="downloadContent('quote')">Download Quote</button>
         <canvas id="canvas" style="display: none;"></canvas>
     </div>
 
+    <script src="scripts.js"></script>
     <script>
-        // 250+ Preloaded Quotes
+        // Initialize quotes functionality
+        document.getElementById("quoteButton").addEventListener("click", () => {
+            generateContent(quotes, 'quote');
+        });
+        
+        // Quotes array (reduced for brevity, keep your original 250+ quotes)
         const quotes = [
-            "The only way to do great work is to love what you do. - Steve Jobs",
+        "The only way to do great work is to love what you do. - Steve Jobs",
             "In three words I can sum up everything I've learned about life: it goes on. - Robert Frost",
             "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
             "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
@@ -383,26 +328,6 @@
             "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart. - Helen Keller",
             "In the end, it's not the years in your life that count. It's the life in your years. - Abraham Lincoln"
         ];
-        document.getElementById("quoteButton").addEventListener("click", () => {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            document.getElementById("quote").textContent = quotes[randomIndex];
-        });
-        function downloadQuote() {
-            const canvas = document.getElementById("canvas");
-            const ctx = canvas.getContext("2d");
-            canvas.width = 600;
-            canvas.height = 200;
-            ctx.fillStyle = "#1e1e1e";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "white";
-            ctx.font = "20px Arial";
-            ctx.textAlign = "center";
-            ctx.fillText(document.getElementById("quote").textContent, 300, 100);
-            const link = document.createElement("a");
-            link.href = canvas.toDataURL();
-            link.download = "inspirational_quote.png";
-            link.click();
-        }
     </script>
 </body>
 </html>
