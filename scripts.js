@@ -67,7 +67,7 @@ function wrapText(context, text, maxWidth) {
 
     for (let i = 1; i < words.length; i++) {
         const testLine = currentLine + " " + words[i];
-        const metrics = context.MeasureText(testLine);
+        const metrics = context.measureText(testLine);
         if (metrics.width < maxWidth) {
             currentLine = testLine;
         } else {
