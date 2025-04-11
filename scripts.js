@@ -17,22 +17,21 @@ function generateContent(array, elementId) {
 
 function downloadContent(elementId) {
     const contentElement = document.getElementById(elementId);
-    if (!contentElement) {
-        console.error(`Element with ID ${elementId} not found`);
+    if (!contentElement || contentElement.textContent === "Click the button for inspiration!") {
+        alert("Generate a quote/fact first!");
         return;
     }
 
-    const content = contentElement.textContent;
     const canvas = document.getElementById("canvas");
-    if (!canvas) {
-        console.error('Canvas element not found');
-        return;
-    }
-
     const ctx = canvas.getContext("2d");
-      
-    // Reset canvas
+    
+    // Clear and redraw
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#1e1e1e";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Rest of your code remains unchanged...
+}
     
     // Styling
     ctx.fillStyle = "#1e1e1e";
