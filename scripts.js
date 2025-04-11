@@ -30,9 +30,7 @@ function downloadContent(elementId) {
     }
 
     const ctx = canvas.getContext("2d");
-    canvas.width = 600;
-    canvas.height = 200;
-    
+      
     // Reset canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
