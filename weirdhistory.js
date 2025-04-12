@@ -1,6 +1,3 @@
-// Import the historical events
-import historicalEvents from './wierdhistory.js';
-
 document.addEventListener('DOMContentLoaded', function() {
     const currentDateElement = document.getElementById('current-date');
     const eventsContainer = document.getElementById('events-container');
