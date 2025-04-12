@@ -31,32 +31,15 @@
             </div>
             
             <div class="date-display">
-                <h2 id="current-date">April 12</h2>
+                <h2 id="current-date"></h2>
             </div>
             
-            <div id="events-container">
-                <!-- Events will be dynamically inserted here -->
-            </div>
+            <div id="events-container"></div>
             
             <button id="share-event">Share This Day in History</button>
         </div>
-        
-        <canvas id="canvas" width="600" height="200" style="display: none;"></canvas>
     </div>
 
-    <script>
-        // Sample historical events data - replace with your complete dataset
-        const historicalEvents = {
-            "4-12": [
-                { year: "1961", event: "Yuri Gagarin becomes the first human to journey into outer space" },
-                { year: "1981", event: "The first launch of the Space Shuttle (Columbia)" }
-            ],
-            "4-13": [
-                { year: "1743", event: "Thomas Jefferson, third U.S. president, is born" }
-            ]
-            // Add more dates and events as needed
-        };
-    </script>
     <script src="weirdhistory.js"></script>
 </body>
 </html>
