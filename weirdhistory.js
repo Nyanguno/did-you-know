@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const historicalEvents = {
+        // January
+        "1-1": [{ year: "45 BC", event: "Julian calendar takes effect as the civil calendar of the Roman Empire" }],
+        "1-2": [{ year: "1492", event: "Reconquista completes as the last Moorish leader surrenders Granada to Ferdinand and Isabella" }],
+        // ... (more dates)
+        "4-12": [
+            { year: "1961", event: "Yuri Gagarin becomes the first human in space" },
+            { year: "1981", event: "First launch of the Space Shuttle (Columbia)" }
+        ],
+        "4-13": [
+            { year: "1743", event: "Thomas Jefferson, third U.S. president, is born" },
+            { year: "2029", event: "Apophis asteroid will make a close approach to Earth (predicted)" }
+        ],
+        // ... (more dates)
+        "12-31": [
+            { year: "1999", event: "Boris Yeltsin resigns as Russian president, making Vladimir Putin acting president" },
+            { year: "1907", event: "First New Year's Eve celebration held in Times Square (then Longacre Square)" }
+        ]
+    };
+
     const currentDateElement = document.getElementById('current-date');
     const eventsContainer = document.getElementById('events-container');
     const prevDayButton = document.getElementById('prev-day');
@@ -9,10 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentDate = new Date();
     
-    // Initialize with today's date
+    // Initialize
     displayEventsForDate(currentDate);
     
-    // Event listeners for navigation buttons
+    // Event listeners
     prevDayButton.addEventListener('click', () => {
         currentDate.setDate(currentDate.getDate() - 1);
         displayEventsForDate(currentDate);
@@ -29,68 +49,53 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     randomDayButton.addEventListener('click', () => {
-        // Generate a random month (0-11) and day (1-28 to avoid issues with month lengths)
         const randomMonth = Math.floor(Math.random() * 12);
         const randomDay = Math.floor(Math.random() * 28) + 1;
-        
         currentDate = new Date();
         currentDate.setMonth(randomMonth);
         currentDate.setDate(randomDay);
-        
         displayEventsForDate(currentDate);
     });
     
     shareButton.addEventListener('click', () => {
-        const monthDay = `${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
         const formattedDate = formatDate(currentDate);
-        let shareText = `Today in Weird History (${formattedDate}):\n\n`;
+        const monthDay = `${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+        let shareText = `On ${formattedDate} in history:\n\n`;
         
         const events = historicalEvents[monthDay] || [];
         events.forEach(event => {
             shareText += `${event.year}: ${event.event}\n\n`;
         });
         
-        shareText += "Find more at funfactgenerator.site!";
-        
-        // Try to use Web Share API if available
         if (navigator.share) {
             navigator.share({
-                title: 'Today in Weird History',
+                title: `Historical Events for ${formattedDate}`,
                 text: shareText
-            })
-            .catch(error => console.log('Error sharing:', error));
+            }).catch(err => console.log('Error sharing:', err));
         } else {
-            // Fallback - copy to clipboard
             navigator.clipboard.writeText(shareText)
-                .then(() => alert('Historical events copied to clipboard! Now you can paste to share.'))
+                .then(() => alert('Copied to clipboard!'))
                 .catch(err => console.error('Could not copy text: ', err));
         }
     });
     
     function displayEventsForDate(date) {
-        // Format date for display
         const formattedDate = formatDate(date);
         currentDateElement.textContent = formattedDate;
         
-        // Clear previous events
         eventsContainer.innerHTML = '';
-        
-        // Get month-day format for lookup
         const monthDay = `${date.getMonth() + 1}-${date.getDate()}`;
-        
-        // Get events for this date
         const events = historicalEvents[monthDay] || [];
         
         if (events.length === 0) {
-            // No events for this date
-            const noEventsElement = document.createElement('div');
-            noEventsElement.className = 'event-container';
-            noEventsElement.innerHTML = `
-                <div class="event-description">No weird historical events found for this date... yet!</div>
+            eventsContainer.innerHTML = `
+                <div class="event-container">
+                    <div class="event-description">
+                        No weird historical events found for this date... yet!
+                    </div>
+                </div>
             `;
-            eventsContainer.appendChild(noEventsElement);
         } else {
-            // Display each event
             events.forEach(event => {
                 const eventElement = document.createElement('div');
                 eventElement.className = 'event-container';
@@ -106,10 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function formatDate(date) {
         const months = [
-            'January', 'February', 'March', 'April', 'May', 'June', 
+            'January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'
         ];
-        
         return `${months[date.getMonth()]} ${date.getDate()}`;
     }
 });
