@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fact Battle - Vote for the Weirdest Facts!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .poll-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #2a2a2a;
+            border-radius: 10px;
+        }
+        
+        .poll-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .poll-option {
+            background: #3a3a3a;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .poll-option:hover {
+            background: #4a4a4a;
+        }
+        
+        .poll-option.selected {
+            background: #007BFF;
+        }
+        
+        .results {
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .result-bar {
+            height: 30px;
+            background: #333;
+            margin: 10px 0;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .result-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #007BFF, #00c6ff);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s;
+        }
+        
+        .result-text {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            color: white;
+        }
+        
+        .result-label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .poll-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .poll-info {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .new-poll {
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .votes-text {
+            text-align: center;
+            color: #aaa;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Facts</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="factbattle.html">Fact Battle</a>
+        <a href="funtools.html">Fun Tools</a>
+        <a href="weirdhistory.html">Weird History</a>
+    </nav>
+
+    <div class="container">
+        <h1>Fact Battle! ⚔️</h1>
+        <p>Vote for the weirder, creepier, or more surprising fact. See how your opinion compares!</p>
+        
+        <div class="poll-container">
+            <h2 id="poll-question">Which fact is creepier?</h2>
+            
+            <div class="poll-options">
+                <div class="poll-option" data-option="A">
+                    <p id="option-a">Shrimp hearts are in their heads</p>
+                </div>
+                <div class="poll-option" data-option="B">
+                    <p id="option-b">You shed 40lbs of skin in your lifetime</p>
+                </div>
+            </div>
+            
+            <div class="poll-buttons">
+                <button id="vote-button">Vote!</button>
+                <button id="show-results">See Results</button>
+            </div>
+            
+            <div class="results" id="results">
+                <h3>Results</h3>
+                
+                <div class="result-label" id="label-a">Option A</div>
+                <div class="result-bar">
+                    <div class="result-fill" id="result-a"></div>
+                    <div class="result-text" id="percent-a">0%</div>
+                </div>
+                
+                <div class="result-label" id="label-b">Option B</div>
+                <div class="result-bar">
+                    <div class="result-fill" id="result-b"></div>
+                    <div class="result-text" id="percent-b">0%</div>
+                </div>
+                
+                <div class="votes-text">
+                    <span id="total-votes">0</span> votes cast
+                </div>
+            </div>
+            
+            <div class="poll-info">
+                All votes are stored locally on your device.
+            </div>
+        </div>
+        
+        <button class="new-poll" id="new-poll">Load New Fact Battle</button>
+        
+        <canvas id="canvas" width="600" height="200" style="display: none;"></canvas>
+    </div>
+
+    <script src="factbattle.js"></script>
+</body>
+</html>
