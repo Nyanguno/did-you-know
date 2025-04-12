@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today in Weird History</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .calendar-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #2a2a2a;
+            border-radius: 10px;
+        }
+        
+        .date-display {
+            background: #3a3a3a;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .date-display h2 {
+            margin: 0;
+            color: #ffcc00;
+            font-size: 28px;
+        }
+        
+        .event-container {
+            background: #3a3a3a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 5px solid #007BFF;
+        }
+        
+        .event-year {
+            font-weight: bold;
+            color: #ffcc00;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .event-description {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .navigation button {
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        .navigation button:first-child {
+            margin-left: 0;
+        }
+        
+        .navigation button:last-child {
+            margin-right: 0;
+        }
+        
+        .source-note {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        #share-event {
+            background: #25D366;
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Facts</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="factbattle.html">Fact Battle</a>
+        <a href="funtools.html">Fun Tools</a>
+        <a href="weirdhistory.html">Weird History</a>
+    </nav>
+
+    <div class="container">
+        <h1>Today in Weird History 📅</h1>
+        <p>Bizarre, overlooked, and slightly embellished historical events for every day of the year!</p>
+        
+        <div class="calendar-container">
+            <div class="navigation">
+                <button id="prev-day">Previous Day</button>
+                <button id="today">Today</button>
+                <button id="random-day">Random Day</button>
+                <button id="next-day">Next Day</button>
+            </div>
+            
+            <div class="date-display">
+                <h2 id="current-date">April 12</h2>
+            </div>
+            
+            <div id="events-container">
+                <!-- Events will be dynamically inserted here -->
+            </div>
+            
+            <button id="share-event">Share This Day in History</button>
+        </div>
+        
+        <canvas id="canvas" width="600" height="200" style="display: none;"></canvas>
+    </div>
+
+    <script src="weirdhistory.js"></script>
+</body>
+</html>
