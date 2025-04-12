@@ -74,6 +74,7 @@
         .tabs {
             display: flex;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         
         .tab {
@@ -82,6 +83,7 @@
             background: #333;
             border-radius: 5px 5px 0 0;
             margin-right: 5px;
+            margin-bottom: 5px;
         }
         
         .tab.active {
@@ -99,6 +101,45 @@
         
         .btn-share {
             background: #25D366;
+            margin-top: 10px;
+        }
+        
+        .fortune-cookie {
+            padding: 20px;
+            background: #4a3a2a;
+            border-radius: 10px;
+            font-style: italic;
+            position: relative;
+            text-align: center;
+        }
+        
+        .fortune-cookie::before {
+            content: "🥠";
+            font-size: 24px;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .nonsense-word {
+            font-size: 28px !important;
+            font-weight: bold;
+            color: #ff9900;
+            text-align: center;
+        }
+        
+        .nonsense-definition {
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .excuse-text {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px;
+            background: #4a4a3a;
+            border-radius: 8px;
             margin-top: 10px;
         }
     </style>
@@ -119,6 +160,9 @@
         <div class="tabs">
             <div class="tab active" data-tab="bananas">Banana Height</div>
             <div class="tab" data-tab="flamingo">Flamingo Name</div>
+            <div class="tab" data-tab="fortune">Fortune Cookie</div>
+            <div class="tab" data-tab="nonsense">Nonsense Word</div>
+            <div class="tab" data-tab="excuse">Excuse Generator</div>
         </div>
         
         <div class="tab-content active" id="bananas-tab">
@@ -185,6 +229,70 @@
                     <h3>Your Flamingo Name Is:</h3>
                     <p class="flamingo-result" id="flamingo-text"></p>
                     <button class="btn-share" id="share-flamingo">Share Your Flamingo Name</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="fortune-tab">
+            <div class="tool-container">
+                <h2>Fortune Cookie Generator 🥠</h2>
+                <div class="tool-description">
+                    Crack open a digital fortune cookie and reveal your destiny!
+                </div>
+                
+                <button id="generate-fortune">Open Fortune Cookie</button>
+                
+                <div class="tool-result" id="fortune-result">
+                    <h3>Your Fortune:</h3>
+                    <div class="fortune-cookie" id="fortune-text"></div>
+                    <button class="btn-share" id="share-fortune">Share Your Fortune</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="nonsense-tab">
+            <div class="tool-container">
+                <h2>Nonsense Word Generator 🔤</h2>
+                <div class="tool-description">
+                    Create completely made-up words with equally made-up definitions!
+                </div>
+                
+                <button id="generate-nonsense">Generate Nonsense Word</button>
+                
+                <div class="tool-result" id="nonsense-result">
+                    <h3>Your New Word:</h3>
+                    <p class="nonsense-word" id="nonsense-word"></p>
+                    <p class="nonsense-definition" id="nonsense-definition"></p>
+                    <p id="nonsense-example"></p>
+                    <button class="btn-share" id="share-nonsense">Share This Word</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="excuse-tab">
+            <div class="tool-container">
+                <h2>Random Excuse Generator 🙈</h2>
+                <div class="tool-description">
+                    Need a creative reason for being late or missing something? We've got you covered!
+                </div>
+                
+                <div class="tool-input">
+                    <label for="excuse-type">Excuse Type:</label>
+                    <select id="excuse-type">
+                        <option value="work">Work/School</option>
+                        <option value="social">Social Event</option>
+                        <option value="chore">Household Chore</option>
+                        <option value="all">Surprise Me!</option>
+                    </select>
+                </div>
+                
+                <button id="generate-excuse">Generate Excuse</button>
+                
+                <div class="tool-result" id="excuse-result">
+                    <h3>Your Ready-Made Excuse:</h3>
+                    <div class="excuse-text" id="excuse-text"></div>
+                    <p><em>Use with caution. We are not responsible for consequences.</em></p>
+                    <button class="btn-share" id="share-excuse">Share This Excuse</button>
                 </div>
             </div>
         </div>
