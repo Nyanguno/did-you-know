@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useless But Fun Tools</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .tool-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #2a2a2a;
+            border-radius: 10px;
+        }
+        
+        .tool-input {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .tool-input label {
+            font-weight: bold;
+        }
+        
+        .tool-input input, .tool-input select {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background: #3a3a3a;
+            color: white;
+        }
+        
+        .tool-input input:focus, .tool-input select:focus {
+            outline: 2px solid #007BFF;
+        }
+        
+        .tool-result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #3a3a3a;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .tool-result h3 {
+            margin-top: 0;
+            color: #ffcc00;
+        }
+        
+        .tool-result p {
+            font-size: 18px;
+            margin-bottom: 0;
+        }
+
+        .tool-description {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .flamingo-result {
+            font-size: 24px !important;
+            font-weight: bold;
+            color: #ff66cc;
+        }
+        
+        .bananas-visual {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 24px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #333;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        
+        .tab.active {
+            background: #2a2a2a;
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .btn-share {
+            background: #25D366;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Facts</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="factbattle.html">Fact Battle</a>
+        <a href="funtools.html">Fun Tools</a>
+        <a href="weirdhistory.html">Weird History</a>
+    </nav>
+
+    <div class="container">
+        <h1>Useless But Fun Tools 🛠️</h1>
+        <p>Absolutely zero practical value, 100% entertainment!</p>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="bananas">Banana Height</div>
+            <div class="tab" data-tab="flamingo">Flamingo Name</div>
+        </div>
+        
+        <div class="tab-content active" id="bananas-tab">
+            <div class="tool-container">
+                <h2>How Many Bananas Tall Are You? 🍌</h2>
+                <div class="tool-description">
+                    The standard unit of measurement you never knew you needed!
+                </div>
+                
+                <div class="tool-input">
+                    <label for="height">Your Height:</label>
+                    <input type="number" id="height" placeholder="Enter your height..." min="30" max="250">
+                    
+                    <label for="unit">Unit:</label>
+                    <select id="unit">
+                        <option value="cm">Centimeters</option>
+                        <option value="inches">Inches</option>
+                    </select>
+                </div>
+                
+                <button id="calculate-bananas">Calculate</button>
+                
+                <div class="tool-result" id="banana-result">
+                    <h3>Your Banana Height:</h3>
+                    <div class="bananas-visual" id="banana-visual"></div>
+                    <p id="banana-text"></p>
+                    <button class="btn-share" id="share-banana">Share Result</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="flamingo-tab">
+            <div class="tool-container">
+                <h2>Flamingo Name Generator 🦩</h2>
+                <div class="tool-description">
+                    Discover your fabulous flamingo alter ego!
+                </div>
+                
+                <div class="tool-input">
+                    <label for="first-name">Your First Name:</label>
+                    <input type="text" id="first-name" placeholder="Enter your first name...">
+                    
+                    <label for="birth-month">Birth Month:</label>
+                    <select id="birth-month">
+                        <option value="">Choose your birth month...</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+                
+                <button id="generate-flamingo">Generate Flamingo Name</button>
+                
+                <div class="tool-result" id="flamingo-result">
+                    <h3>Your Flamingo Name Is:</h3>
+                    <p class="flamingo-result" id="flamingo-text"></p>
+                    <button class="btn-share" id="share-flamingo">Share Your Flamingo Name</button>
+                </div>
+            </div>
+        </div>
+        
+        <canvas id="canvas" width="600" height="200" style="display: none;"></canvas>
+    </div>
+
+    <script src="funtools.js"></script>
+</body>
+</html>
