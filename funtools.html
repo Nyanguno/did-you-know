@@ -6,7 +6,156 @@
     <title>Useless But Fun Tools</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* ... (keep all your existing styles) ... */
+        /* Basic styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .navbar {
+            background-color: #2c3e50;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .navbar a:hover {
+            background-color: #1abc9c;
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            background-color: #f1f1f1;
+            transition: background-color 0.3s;
+        }
+        
+        .tab:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .tab.active {
+            background-color: #1abc9c;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Form elements */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #16a085;
+        }
+        
+        /* Results */
+        .result {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: none;
+            text-align: center;
+        }
+        
+        .visual {
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            word-wrap: break-word;
+        }
+        
+        .btn-share {
+            background-color: #3498db;
+            margin-top: 1rem;
+        }
+        
+        .btn-share:hover {
+            background-color: #2980b9;
+        }
+        
+        @media (max-width: 600px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                margin-bottom: 5px;
+                border-radius: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -30,7 +179,123 @@
             <div class="tab" data-tab="excuse">Excuse Generator</div>
         </div>
         
-        <!-- ... (keep all your existing tab content sections) ... -->
+        <!-- Banana Height Calculator -->
+        <div id="bananas-tab" class="tab-content active">
+            <h2>Banana Height Calculator</h2>
+            <p>Find out how many bananas tall you are!</p>
+            
+            <div class="form-group">
+                <label for="height">Your Height:</label>
+                <input type="number" id="height" min="1" step="0.1" placeholder="Enter your height">
+            </div>
+            
+            <div class="form-group">
+                <label for="unit">Unit:</label>
+                <select id="unit">
+                    <option value="cm">Centimeters</option>
+                    <option value="in">Inches</option>
+                </select>
+            </div>
+            
+            <button id="calculate-bananas">Calculate</button>
+            
+            <div id="banana-result" class="result">
+                <p id="banana-text"></p>
+                <div id="banana-visual" class="visual"></div>
+                <button id="share-banana" class="btn-share">Share Result</button>
+            </div>
+        </div>
+        
+        <!-- Flamingo Name Generator -->
+        <div id="flamingo-tab" class="tab-content">
+            <h2>Flamingo Name Generator</h2>
+            <p>Discover your fabulous flamingo alter ego!</p>
+            
+            <div class="form-group">
+                <label for="first-name">Your First Name:</label>
+                <input type="text" id="first-name" placeholder="Enter your first name">
+            </div>
+            
+            <div class="form-group">
+                <label for="birth-month">Birth Month:</label>
+                <select id="birth-month">
+                    <option value="">-- Select Month --</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+            </div>
+            
+            <button id="generate-flamingo">Generate Name</button>
+            
+            <div id="flamingo-result" class="result">
+                <p id="flamingo-text"></p>
+                <div class="visual">🦩</div>
+                <button id="share-flamingo" class="btn-share">Share Result</button>
+            </div>
+        </div>
+        
+        <!-- Fortune Cookie Generator -->
+        <div id="fortune-tab" class="tab-content">
+            <h2>Fortune Cookie Generator</h2>
+            <p>Crack open a digital fortune cookie!</p>
+            
+            <button id="generate-fortune">Get Fortune</button>
+            
+            <div id="fortune-result" class="result">
+                <p id="fortune-text"></p>
+                <div class="visual">🥠</div>
+                <button id="share-fortune" class="btn-share">Share Result</button>
+            </div>
+        </div>
+        
+        <!-- Nonsense Word Generator -->
+        <div id="nonsense-tab" class="tab-content">
+            <h2>Nonsense Word Generator</h2>
+            <p>Create a brand new word that means absolutely nothing... until now!</p>
+            
+            <button id="generate-nonsense">Generate Word</button>
+            
+            <div id="nonsense-result" class="result">
+                <h3 id="nonsense-word"></h3>
+                <p><strong>Definition:</strong> <span id="nonsense-definition"></span></p>
+                <p><strong>Example:</strong> <span id="nonsense-example"></span></p>
+                <button id="share-nonsense" class="btn-share">Share Result</button>
+            </div>
+        </div>
+        
+        <!-- Excuse Generator -->
+        <div id="excuse-tab" class="tab-content">
+            <h2>Excuse Generator</h2>
+            <p>Need to get out of something? We've got you covered!</p>
+            
+            <div class="form-group">
+                <label for="excuse-type">What are you avoiding?</label>
+                <select id="excuse-type">
+                    <option value="random">Surprise Me</option>
+                    <option value="work">Work/School</option>
+                    <option value="social">Social Event</option>
+                    <option value="chore">Chores</option>
+                </select>
+            </div>
+            
+            <button id="generate-excuse">Generate Excuse</button>
+            
+            <div id="excuse-result" class="result">
+                <p id="excuse-text"></p>
+                <div class="visual">🙄</div>
+                <button id="share-excuse" class="btn-share">Share Result</button>
+            </div>
+        </div>
     </div>
 
     <script src="funtools.js"></script>
