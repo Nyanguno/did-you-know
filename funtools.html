@@ -6,155 +6,81 @@
     <title>Useless But Fun Tools</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Basic styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-        }
-        
-        .navbar {
-            background-color: #2c3e50;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .navbar a {
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .navbar a:hover {
-            background-color: #1abc9c;
-        }
-        
-        /* Tabs */
+        /* Tool-specific styles */
         .tabs {
             display: flex;
-            margin-bottom: 1rem;
-            overflow-x: auto;
-            border-bottom: 1px solid #ddd;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
         
         .tab {
-            padding: 0.8rem 1.2rem;
+            background: #333;
+            color: #fff;
+            padding: 10px 15px;
             cursor: pointer;
-            border-radius: 5px 5px 0 0;
-            margin-right: 5px;
-            background-color: #f1f1f1;
-            transition: background-color 0.3s;
-        }
-        
-        .tab:hover {
-            background-color: #e0e0e0;
+            margin: 5px;
+            border-radius: 5px;
         }
         
         .tab.active {
-            background-color: #1abc9c;
-            color: white;
+            background: #ffcc00;
+            color: #121212;
         }
         
         .tab-content {
             display: none;
-            padding: 1rem;
-            background-color: white;
-            border-radius: 0 0 5px 5px;
-            margin-bottom: 1rem;
+            background: #252525;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
         }
         
         .tab-content.active {
             display: block;
         }
         
-        /* Form elements */
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
+            text-align: left;
         }
         
         label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ffcc00;
         }
         
         input, select {
             width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        button {
-            background-color: #1abc9c;
-            color: white;
+            padding: 10px;
             border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: #16a085;
-        }
-        
-        /* Results */
-        .result {
-            background-color: #f8f9fa;
-            padding: 1rem;
             border-radius: 5px;
-            margin-top: 1rem;
+            background: #333;
+            color: white;
+        }
+        
+        .result {
+            background: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
             display: none;
-            text-align: center;
         }
         
         .visual {
-            margin: 1rem 0;
-            font-size: 1.5rem;
+            margin: 15px 0;
+            font-size: 24px;
             word-wrap: break-word;
         }
         
         .btn-share {
-            background-color: #3498db;
-            margin-top: 1rem;
+            background: #ffcc00;
+            color: #121212;
         }
         
         .btn-share:hover {
-            background-color: #2980b9;
-        }
-        
-        @media (max-width: 600px) {
-            .tabs {
-                flex-direction: column;
-            }
-            
-            .tab {
-                margin-bottom: 5px;
-                border-radius: 5px;
-            }
+            background: #e6b800;
         }
     </style>
 </head>
@@ -276,7 +202,7 @@
         <!-- Excuse Generator -->
         <div id="excuse-tab" class="tab-content">
             <h2>Excuse Generator</h2>
-            <p>Need to get out of something? We've got you covered!</p>
+            <p>Need a believable reason for being late? We've got you covered!</p>
             
             <div class="form-group">
                 <label for="excuse-type">What are you avoiding?</label>
@@ -292,12 +218,60 @@
             
             <div id="excuse-result" class="result">
                 <p id="excuse-text"></p>
-                <div class="visual">🙄</div>
+                <div class="visual">🕒</div>
                 <button id="share-excuse" class="btn-share">Share Result</button>
             </div>
         </div>
     </div>
 
     <script src="funtools.js"></script>
+    <script>
+        // Override the existing excuse generator function with more realistic excuses
+        document.addEventListener('DOMContentLoaded', function() {
+            const originalExcuseButton = document.getElementById('generate-excuse');
+            if (originalExcuseButton) {
+                // Remove the original event listener by cloning and replacing the button
+                const newExcuseButton = originalExcuseButton.cloneNode(true);
+                originalExcuseButton.parentNode.replaceChild(newExcuseButton, originalExcuseButton);
+                
+                // Add our new event listener with realistic excuses
+                newExcuseButton.addEventListener('click', function() {
+                    const excuseType = document.getElementById('excuse-type').value;
+                    
+                    const workExcuses = [
+                        "There was an accident on the highway that backed up traffic for miles.",
+                        "My car wouldn't start this morning and I had to wait for roadside assistance.",
+                        "I had to drop my child off at school and there was an unexpected parent-teacher meeting.",
+                        "My alarm didn't go off because of a power outage during the night."
+                    ];
+                    
+                    const socialExcuses = [
+                        "I got caught on an important work call that I couldn't cut short.",
+                        "I'm running late because of unexpected traffic on my usual route.",
+                        "I had to help my neighbor with an emergency situation.",
+                        "My babysitter canceled at the last minute and I had to find a replacement."
+                    ];
+                    
+                    const choreExcuses = [
+                        "I had an unexpected work deadline that kept me at the office late.",
+                        "I've been feeling under the weather and needed to rest before tackling it.",
+                        "I had to help a family member with an urgent matter.",
+                        "My internet was down and I needed it to look up some instructions first."
+                    ];
+                    
+                    const allExcuses = [...workExcuses, ...socialExcuses, ...choreExcuses];
+                    
+                    let excuse;
+                    if (excuseType === 'work') excuse = workExcuses[Math.floor(Math.random() * workExcuses.length)];
+                    else if (excuseType === 'social') excuse = socialExcuses[Math.floor(Math.random() * socialExcuses.length)];
+                    else if (excuseType === 'chore') excuse = choreExcuses[Math.floor(Math.random() * choreExcuses.length)];
+                    else excuse = allExcuses[Math.floor(Math.random() * allExcuses.length)];
+                    
+                    document.getElementById('excuse-text').textContent = excuse;
+                    document.getElementById('excuse-result').style.display = 'block';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
